@@ -52,3 +52,4 @@ Route::get('/issue', [App\Http\Controllers\IssueController::class, 'index']);
 
 Route::get('/sync', [App\Http\Controllers\IssueController::class, 'sync']);
 
+Route::get('/t-sync', [App\Http\Controllers\TimeController::class, 'sync']);
