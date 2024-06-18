@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\arrt;
 use App\Models\Issue;
 use Hamcrest\Core\Is;
 use Illuminate\Http\Request;
@@ -76,13 +75,6 @@ class IssueController extends Controller
 
     public function remotedtb()
     {
-//        $response = Http::get('redmine.ominext.dev/issues.json', [
-//            'apiKey' => 'b1ba196b818ee1f61bfa51196eea529fa7f05ec4',
-//            'project_id=60',
-//            'limit' => 10,
-//        ]);
-//        return json_decode($response);
-
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -108,8 +100,6 @@ class IssueController extends Controller
         } else {
             return json_decode($response);
         }
-
-
     }
 
 
