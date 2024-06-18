@@ -192,12 +192,5 @@ class IssueController extends Controller
             ]);
         }
         echo "sinc";
-        //        $client = new Client();
-//        $response = $client->get(
-//            'https://redmine.ominext.dev/issues.json', [
-//            'headers' => [
-//                'APP_KEY' => '8e39ce985d6b9396859c5561dae13ffb6a7795ae',
-//            ],
-//        ]);
     }
 }
