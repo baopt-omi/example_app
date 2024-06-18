@@ -100,6 +100,7 @@ class IssueController extends Controller
         } else {
             return json_decode($response);
         }
+    return view('issue.index', compact('response'));
     }
 
 
