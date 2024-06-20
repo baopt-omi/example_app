@@ -100,7 +100,7 @@ class IssueController extends Controller
         } else {
             return json_decode($response);
         }
-    return view('issue.index', compact('response'));
+        return view('issue.index', compact('response'));
     }
 
 
@@ -144,7 +144,8 @@ class IssueController extends Controller
 
     public function sinc()
     {
-        $api_url = 'https://8e39ce985d6b9396859c5561dae13ffb6a7795ae:X@redmine.ominext.dev/issues.json';
+        //$api_url = 'https://8e39ce985d6b9396859c5561dae13ffb6a7795ae:X@redmine.ominext.dev/issues.json';
+        $api_url = 'https://50a7ba375affb9bdc36263986077d3b8f57cd386:X@new.redmine.ominext.com/issues.json?assigned_to_id=984';
         $response = Http::get($api_url);
         $mydatas = json_decode($response->getBody()->getContents());
 
@@ -152,13 +153,7 @@ class IssueController extends Controller
         $arr_test = [];
         foreach ($mydata[0]->issues as $m) {
             //$arr_test[]['project_name'] = $m->project->name;
-            //dd($m->custom_fields);
-//            if (!$m->assigned_to) {
-//                $m->assigned_to = null;
-//            }
-//            if (!$m->custom_fields[0]->value) {
-//                $m->custom_fields[0]->value = null;
-//            }
+            //dd($m);
             Issue::updateOrInsert([
                 'issueID' => $m->id,
                 'projectName' => $m->project->name,
@@ -166,7 +161,7 @@ class IssueController extends Controller
                 'statusName' => $m->status->name,
                 'priorityName' => $m->priority->name,
                 'authorName' => $m->author->name,
-                //'assigneeName' => $m->assigned_to->name,
+                'assigneeName' => $m->assigned_to->name,
                 'Subject' => $m->subject,
                 'Description' => $m->description,
                 'startDate' => $m->start_date,
@@ -174,7 +169,10 @@ class IssueController extends Controller
                 'doneRatio' => $m->done_ratio,
                 'isPrivate' => $m->is_private,
                 'estimatedHours' => $m->estimated_hours,
-                //'PIC' => $m->custom_fields[0]->value,
+//                'totalEstimatedHours' => $m->total_estimated_hours,
+//                'spentHours' => $m->spent_hours,
+//                'totalSpentHours' => $m->total_spent_hours,
+                'PIC' => $m->custom_fields[0]->value,
                 'actualStartDate' => $m->custom_fields[1]->value,
                 'actualEndDate' => $m->custom_fields[2]->value,
                 'created_at' => $m->created_on,

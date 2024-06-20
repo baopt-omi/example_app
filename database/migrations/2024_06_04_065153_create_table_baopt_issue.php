@@ -27,6 +27,9 @@ return new class extends Migration
             $table->decimal("doneRatio")->default(0);
             $table->boolean('isPrivate');
             $table->float('estimatedHours')->default(0)->nullable();
+//            $table->decimal("totalEstimatedHours")->default(0);
+//            $table->decimal("spentHours")->default(0);
+//            $table->decimal("totalSpentHours")->default(0);
             $table->date('actualStartDate')->nullable();
             $table->date('actualEndDate')->nullable();
             $table->string('PIC')->nullable()->default(0);
